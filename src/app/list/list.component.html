@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+<div class="row justify-content-center align-items-center" style="height:80px">
+  <button class="btn btn-warning text-success" style="width:280px" (click)="addTask()">Add Task</button>
+  <button class="btn btn-info text-light" style="width:280px; margin-left:10px" (click)="getTasks()">Current List
+    <span *ngIf="isGetting">
+      <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+    </span>
+  </button>
+  <button class="btn btn-info text-light" style="width:280px; margin-left:10px" (click)="getHistoricTask()">Historic List
+    <span *ngIf="isGettingHistory">
+      <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+    </span>
+  </button>
+  <button class="btn btn-success text-light" style="width:280px; margin-left:10px" (click)="saveTask()">Save Tasks
+    <span *ngIf="isSaving">
+      <i class="fa fa-circle-o-notch fa-spin"></i>Saving
+    </span>
+  </button>
+</div>
+
+<div class="task" style="height:150px;" *ngFor="let task of taskList; let i = index">
+  <button class="form-control btn-danger" style="width: 40px; margin-left: 865px" (click)='removeTask(i)'> X</button>
+  <div class="row justify-content-center align-items-center">
+    <b class="title"> Title:</b>
+    <input class="form-control" style="width: 200px;" [(ngModel)]="task.title" type="text">
+  </div>
+
+  <div class="row justify-content-center align-items-center"> 
+    <b class="title"> Description:</b>
+    <input class="form-control" style="width: 200px;" [(ngModel)]="task.description" type="text">
+  </div>
+  <div class="row justify-content-center align-items-center form-inline">
+    <div class="form-group" style="margin-left: 1195px">
+      <b class="title" for="complete">Complete:</b> 
+      <input type="checkbox" style="margin-left: 28px" name="complete" id="complete" class="checkbox" [(ngModel)]="task.complete"/>
+    </div>
+  </div>
+
+</div>
+</div>
